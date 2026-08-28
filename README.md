@@ -28,8 +28,16 @@ aborting the stream cancels the underlying job.
 | gemini-2.5-flash | $0.15 / $1.25 |
 | gemini-2.5-flash-lite | $0.05 / $0.20 |
 | gemini-2.5-pro | $0.625 / $5.00 |
-| gemini-3-flash | $0.15 / $1.25 |
-| gemini-3-pro | $0.625 / $5.00 |
+| gemini-3-flash-preview | $0.25 / $1.50 |
+| gemini-3.1-flash-lite | $0.125 / $0.75 |
+| gemini-3.1-pro-preview | $1.00 / $6.00 |
+| gemini-3.5-flash-lite | $0.15 / $1.25 |
+| gemini-3.5-flash | $0.75 / $4.50 |
+| gemini-3.6-flash | $0.375 / $1.875 |
+| gemini-3.7-flash | $0.375 / $1.875 |
+
+prices from the [docs](https://ai.google.dev/gemini-api/docs/pricing) as of
+2026-08-28. note 3.6/3.7 flash are at promo pricing through 2026-12-31.
 
 ## configuration
 
