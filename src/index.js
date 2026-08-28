@@ -13,8 +13,11 @@
 import { GoogleGenAI } from "@google/genai";
 import { createBatchStream } from "./batch.js";
 
-// interactive prices: flash 0.30/2.50, flash-lite 0.10/0.40, pro 1.25/10.00.
-// gemini batch api bills at 50% of interactive for the same model.
+// interactive prices (per 1M tokens, docs 2026-08-28): batch bills at 50%.
+//   2.5 flash 0.30/2.50 | 2.5 flash-lite 0.10/0.40 | 2.5 pro 1.25/10.00
+//   3 flash-preview 0.50/3.00 | 3.1 pro-preview 2.00/12.00 | 3.1 flash-lite 0.25/1.50
+//   3.5 flash 1.50/9.00 | 3.5 flash-lite 0.30/2.50
+//   3.6 flash 0.75/3.75 | 3.7 flash 0.75/3.75 (promo pricing thru 2026-12-31, then 1.50/7.50)
 function batchModel(id, name, input, output, opts = {}) {
   return {
     id,
@@ -36,8 +39,13 @@ const MODELS = [
   batchModel("gemini-2.5-flash", "Gemini 2.5 Flash (Batch)", 0.3, 2.5),
   batchModel("gemini-2.5-flash-lite", "Gemini 2.5 Flash-Lite (Batch)", 0.1, 0.4, { maxTokens: 64_000 }),
   batchModel("gemini-2.5-pro", "Gemini 2.5 Pro (Batch)", 1.25, 10, { maxTokens: 65_536 }),
-  batchModel("gemini-3-flash", "Gemini 3 Flash (Batch)", 0.3, 2.5),
-  batchModel("gemini-3-pro", "Gemini 3 Pro (Batch)", 1.25, 10, { maxTokens: 65_536 }),
+  batchModel("gemini-3-flash-preview", "Gemini 3 Flash Preview (Batch)", 0.5, 3),
+  batchModel("gemini-3.1-flash-lite", "Gemini 3.1 Flash-Lite (Batch)", 0.25, 1.5, { maxTokens: 64_000 }),
+  batchModel("gemini-3.1-pro-preview", "Gemini 3.1 Pro Preview (Batch)", 2, 12),
+  batchModel("gemini-3.5-flash-lite", "Gemini 3.5 Flash-Lite (Batch)", 0.3, 2.5, { maxTokens: 64_000 }),
+  batchModel("gemini-3.5-flash", "Gemini 3.5 Flash (Batch)", 1.5, 9),
+  batchModel("gemini-3.6-flash", "Gemini 3.6 Flash (Batch)", 0.75, 3.75),
+  batchModel("gemini-3.7-flash", "Gemini 3.7 Flash (Batch)", 0.75, 3.75),
 ];
 
 export default function (pi) {
